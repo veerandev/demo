@@ -11,15 +11,15 @@ MessageBoard is a simple web application built using Python, Django (a high-leve
 
 This application lets users post a message, list all the posted messages, view a selected message in detail, and delete a selected message. 
 
-A Message class is defined in the model.py with properties user(string), content(string), creation_date(Date) and is_palindrome (boolean). The Message also has a method to check if the message is a palindrome. The data is validated by MessageManager class before creating a message.
+A Message class is defined in the model.py with properties user(string), content(string), creation_date(Date) and is_palindrome (boolean). The Message class also has a method to check if the message is a palindrome. The data is validated by MessageManager class before creating a message.
 
-A MessageResource class is defined in api.py to handle the RESTful requests for the Message object. The MessageResource class has the list of allowed HTTP methods and the name of the resource. The handle_resource method calls MessageManager create a Message and returns a response with appropriate status code and body.
+A MessageResource class is defined in api.py to handle the RESTful requests for the Message object. The MessageResource class has the list of allowed HTTP methods and the name of the resource. The get_all_or_create_resource method calls MessageManager create a Message and returns a response with appropriate status code and body. The get_or_delete_resource method return or delete a particular resource object based on the request type.
 
-Each request is routed to appropriate resource based on the URL pattern defined in the urls.py file.
+Each request is routed to appropriate resource based on the URL pattern defined in the urls.py.
 
-When a POST request to create a message is received the data is validated, checked to see if it is a palindrome and saved. A response with status code is 201 is returned after successfully creating the new Message object.
+A POST request to the message resource with a JSON object containing user (string) and content(string) can to create a message. When a POST request to create a message is received the data is validated, checked to see if it is a palindrome and saved. A response with status code is 201 is returned after successfully creating the new Message object.
 
-A GET request to the root of the message resource will return all the messages. 
+A GET request to the root of the message resource will return all the messages and status code 200. 
 
 A DELETE request with the id of the Message object will delete the message and a response with status code 204 is send back. 
 
@@ -48,7 +48,7 @@ A GET request with an id can be used to retrieve a particular Message object.
 
 ### Create a message [POST] [/api/v1/message/]
 
-A message can be created by providing a JSON object containing a user and content property. The value of the user is the name of the user and content is the message body.
+A message can be created by providing a JSON object containing a user (string) and content (string) property. The user is the name of the user creating the message, and the content is the body of the message.
 
 + user (string) - The name of the user posting the message (required). 
 + content (string) - The content of the message (required).
@@ -177,8 +177,8 @@ A message can be created by providing a JSON object containing a user and conten
 
 Create a AWS EC2 Ubuntu Instance with Python 2.7, open port 80 for HTTP in the security group.
 
-1. Copy the demo project from GitHub to the Ubuntu instance. Note: All the files must be directly under the demo folder.
-2. Navigate to the demo folder. Make sure the all the files are properly copied. Note: Make sure the 000-default.conf is present.
+1. Copy the demo project from GitHub to the Ubuntu instance. NOTE: All the files must be directly under the demo folder.
+2. Navigate to the demo folder. Make sure the all the files are properly copied. NOTE: Make sure the `000-default.conf` is present.
 3. Run `sudo bash install_setup.sh` (you must have root access). When prompted to create super user for Django. Please type yes and provide password.
 4. Now from your browser go to the public DNS of the Ubuntu instance to access the application.
 

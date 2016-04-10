@@ -1,6 +1,6 @@
 # Message Board
 
-**DEMO:** http://ec2-52-37-228-131.us-west-2.compute.amazonaws.com
+**DEMO:** http://ec2-52-37-156-40.us-west-2.compute.amazonaws.com/
 
 ### Description
 MessageBoard is a simple web application built using Python, Django (a high-level web framework), Tastypie (a web service API framework for Django) and PostgreSQL database in the backend. AngularJS and HTML were used in the frontend. 

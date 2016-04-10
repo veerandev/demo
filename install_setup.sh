@@ -11,7 +11,7 @@ pip install django-tastypie==0.9.12
 pip install psycopg2
 sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'password';"
 mv /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf.old
-mv /home/ubuntu/demo/000-default.conf /etc/apache2/sites-enabled/
+mv /home/ubuntu/demo/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 chown www-data:www-data .
 sudo service apache2 restart
 python manage.py syncdb

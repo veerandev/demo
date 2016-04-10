@@ -1,0 +1,19 @@
+<a class="btn btn-default" href="#" role="button">Home</a>
+<hr>
+<h2 class="text-info">Details of message # {[{details.pk}]}</h2>
+
+<div>
+	<p> <strong class="text-primary">ID: </strong> {[{details.pk}]}</p>
+	<p> <strong class="text-primary">Created Date: </strong>  {[{details.fields.creation_date | date : 'fullDate'}]}</p>
+	<p> <strong class="text-primary">User: </strong> {[{details.fields.user}]}</p>
+	<p> <strong class="text-primary">Content: </strong>  {[{details.fields.content}]}</p>
+	<div ng-show="details.fields">
+		<div ng-show="details.fields.is_palindrome">
+			<p class="text-success"> <strong class="text-primary">Palindrome: </strong>  This message is a palindrome.</p>
+		</div>
+		<div ng-hide="details.fields.is_palindrome">
+			<p class="text-danger"> <strong class="text-primary">Palindrome: </strong>  This message is not a palindrome.</p>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,7 @@
+.remove{
+  	color:#fa646b;
+  	cursor: pointer;
+}
+.remove:hover{
+  	color:#BE050E;
+}

@@ -1,0 +1,46 @@
+
+<div>
+    <table style="width:100%">
+    <tbody>
+    <tr>
+    <td class="col-md-3" style="width:25%;padding-left:40px;vertical-align: top">
+        <div>
+            <form name="messageForm" ng-submit="submitForm()">
+                <div class="form-group">
+                    <label>User Name</label>
+                    <input type="text" required name="name" class="form-control" ng-model="message.username">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <input type="text" required name="content" class="form-control" ng-model="message.content">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </td>
+    <td class="col-md-9" style="vertical-align: top">
+        <div>
+            <table class="table">
+                <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>User</th>
+                  <th>Message</th>
+                  <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="message in messages">
+                    <td class="col-md-1"> <a ui-sref="message({id: message.pk})"> {[{message.pk}]}</a></td>
+                    <td class="col-md-2"> {[{message.fields.user}]}</td>  
+                    <td class="col-md-2"> {[{message.fields.content}]}</td>  
+                    <td class="col-md-2"> <span class="remove glyphicon glyphicon-remove" ng-click="deleteMessage(message, $index)"></span></td>  
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    </td>
+    </tr>
+    </tbody>
+    </table>    
+</div>

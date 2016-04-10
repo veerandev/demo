@@ -2,8 +2,11 @@
 
 **DEMO:** http://ec2-52-37-228-131.us-west-2.compute.amazonaws.com
 
+### Description
 MessageBoard is a simple web application built using Python, Django (a high-level web framework), Tastypie (a web service API framework for Django) and PostgreSQL database in the backend. AngularJS and HTML were used in the frontend. 
 
+
+### Architecture
 ![architecture diagram](http://s30.postimg.org/8tqpj58ap/arc.png)
 
 This application lets users post a message, list all the posted messages, view a selected message in detail, and delete a selected message. 
@@ -172,20 +175,10 @@ A message can be created by providing a JSON object containing a user and conten
 
 ### Deployment
 
-Create a AWS EC2 Ubuntu Instance with Python 2.7
+Create a AWS EC2 Ubuntu Instance with Python 2.7, open port 80 for HTTP in the security group.
 
-1. Create a folder called `demo`.
-2. Copy all the files from the GitHub under the demo folder. Note: All the files must be directly under the demo folder.
-3. Go inside the demo folder and run `sudo bash setup.sh` (you must have root access)
-
-python manage.py syncdb
-python manage.py migrate
-python manage.py runserver
-
-sudo nano /etc/apache2/sites-enabled/000-default.conf
-sudo chown www-data:www-data demo/
-
-
-
-
+1. Copy the demo project from GitHub to the Ubuntu instance. Note: All the files must be directly under the demo folder.
+2. Navigate to the demo folder. Make sure the all the files are properly copied. Note: Make sure the 000-default.conf is present.
+3. Run `sudo bash install_setup.sh` (you must have root access). When prompted to create super user for Django. Please type yes and provide password.
+4. Now from your browser go to the public DNS of the Ubuntu instance to access the application.
 

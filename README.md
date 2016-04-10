@@ -59,38 +59,38 @@ A message can be created by providing a JSON object containing a user (string) a
             Content-Type: application/json
 
     + Body
-        {
-            "user": "Hisham",
-            "content": "Qlick is Awesome"
-        }
+            {
+                "user": "Hisham",
+                "content": "Qlick is Awesome"
+            }
 
 + Response 201 (application/json)
 
     + Headers
 
-          HTTP/1.1 201 CREATED
-          Date: Sun, 10 Apr 2016 19:29:23 GMT
-          Server: Apache/2.4.7 (Ubuntu)
-          Vary: Accept
-          Keep-Alive: timeout=5, max=100
-          Connection: Keep-Alive
-          Transfer-Encoding: chunked
-          Content-Type: application/json
+            HTTP/1.1 201 CREATED
+            Date: Sun, 10 Apr 2016 19:29:23 GMT
+            Server: Apache/2.4.7 (Ubuntu)
+            Vary: Accept
+            Keep-Alive: timeout=5, max=100
+            Connection: Keep-Alive
+            Transfer-Encoding: chunked
+            Content-Type: application/json
 
     + Body
 
-          [
-            {
-              "pk": 7,
-              "model": "messageboard.message",
-              "fields": {
-                "content": "Qlick is Awesome",
-                "is_palindrome": false,
-                "user": "Hisham",
-                "creation_date": "2016-04-10T19:29:23.182Z"
+            [
+              {
+                "pk": 7,
+                "model": "messageboard.message",
+                "fields": {
+                  "content": "Qlick is Awesome",
+                  "is_palindrome": false,
+                  "user": "Hisham",
+                  "creation_date": "2016-04-10T19:29:23.182Z"
+                }
               }
-            }
-          ]
+            ]
 
 ### List All Messages [GET] [/api/v1/message/]
 

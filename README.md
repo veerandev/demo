@@ -59,10 +59,11 @@ A message can be created by providing a JSON object containing a user (string) a
             Content-Type: application/json
 
     + Body
-              {
-                  "user": "Hisham",
-                  "content": "Qlick is Awesome"
-              }
+
+            {
+                "user": "Hisham",
+                "content": "Qlick is Awesome"
+            }
 
 + Response 201 (application/json)
 
@@ -150,18 +151,19 @@ A message can be created by providing a JSON object containing a user (string) a
             Content-Type: application/json
 
     + Body
-              [
-                {
-                  "pk": 7,
-                  "model": "messageboard.message",
-                  "fields": {
-                    "content": "Qlick is Awesome",
-                    "is_palindrome": false,
-                    "user": "Hisham",
-                    "creation_date": "2016-04-10T19:29:23.182Z"
-                  }
+    
+            [
+              {
+                "pk": 7,
+                "model": "messageboard.message",
+                "fields": {
+                  "content": "Qlick is Awesome",
+                  "is_palindrome": false,
+                  "user": "Hisham",
+                  "creation_date": "2016-04-10T19:29:23.182Z"
                 }
-              ]
+              }
+            ]
         
         
 ### Delete a Message [DELETE] [/api/v1/message/{message_id}/]

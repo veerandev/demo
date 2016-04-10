@@ -3,7 +3,7 @@
 **DEMO:** http://ec2-52-37-156-40.us-west-2.compute.amazonaws.com/
 
 ### Description
-MessageBoard is a simple web application built using Python, Django (a high-level web framework), Tastypie (a web service API framework for Django) and PostgreSQL database in the backend. AngularJS and HTML were used in the frontend. 
+MessageBoard is a simple web application built using Python, Django (a high-level web framework), Tastypie (a web service API framework for Django) and PostgreSQL database in the backend. AngularJS and HTML were used in the frontend. The application is deployed on an Ubuntu instance on AWS EC2 using mod_wsgi and Apache web server.
 
 
 ### Architecture
@@ -68,23 +68,29 @@ A message can be created by providing a JSON object containing a user (string) a
 
     + Headers
 
-            HTTP/1.0 201 CREATED
-            Date: Tue, 05 Apr 2016 23:29:56 GMT
-            Server: WSGIServer/0.1 Python/2.7
-            Vary: Accept
-            Content-Type: application/json
-            Location: http://127.0.0.1:8000/api/v1/message/48/
+          HTTP/1.1 201 CREATED
+          Date: Sun, 10 Apr 2016 19:29:23 GMT
+          Server: Apache/2.4.7 (Ubuntu)
+          Vary: Accept
+          Keep-Alive: timeout=5, max=100
+          Connection: Keep-Alive
+          Transfer-Encoding: chunked
+          Content-Type: application/json
 
     + Body
 
-        {
-            "content": "Qlick is Awesome",
-            "creation_date": "2016-04-05T19:29:56.202000",
-            "id": 48,
-            "is_palindrome": false,
-            "resource_uri": "/api/v1/message/48/",
-            "user": "Hisham"
-        }
+          [
+            {
+              "pk": 7,
+              "model": "messageboard.message",
+              "fields": {
+                "content": "Qlick is Awesome",
+                "is_palindrome": false,
+                "user": "Hisham",
+                "creation_date": "2016-04-10T19:29:23.182Z"
+              }
+            }
+          ]
 
 ### List All Messages [GET] [/api/v1/message/]
 
@@ -92,48 +98,40 @@ A message can be created by providing a JSON object containing a user (string) a
 
     + Headers
 
-            HTTP/1.0 200 OK
-            Date: Tue, 05 Apr 2016 23:32:51 GMT
-            Server: WSGIServer/0.1 Python/2.7
+            HTTP/1.1 200 OK
+            Date: Sun, 10 Apr 2016 19:35:29 GMT
+            Server: Apache/2.4.7 (Ubuntu)
             Vary: Accept
-            Content-Type: application/json
             Cache-Control: no-cache
+            Keep-Alive: timeout=5, max=100
+            Connection: Keep-Alive
+            Transfer-Encoding: chunked
+            Content-Type: application/json
 
     + Body
 
-            {
-                "meta": {
-                    "limit": 0,
-                    "offset": 0,
-                    "total_count": 3
-                },
-                "objects": [
-                    {
-                      "content": "abc",
-                      "creation_date": "2016-04-04T01:40:34.301000",
-                      "id": 1,
-                      "is_palindrome": false,
-                      "resource_uri": "/api/v1/message/1/",
-                      "user": "Hisham"
-                    },
-                    {
-                      "content": "helloworld",
-                      "creation_date": "2016-04-04T01:44:42.343000",
-                      "id": 2,
-                      "is_palindrome": false,
-                      "resource_uri": "/api/v1/message/2/",
-                      "user": "Veeran"
-                    },
-                    {
-                      "content": "aba",
-                      "creation_date": "2016-04-04T01:45:02.114000",
-                      "id": 3,
-                      "is_palindrome": true,
-                      "resource_uri": "/api/v1/message/3/",
-                      "user": "hisham"
-                    }
-                ]
-            }
+            [
+              {
+                "pk": 5,
+                "model": "messageboard.message",
+                "fields": {
+                  "content": "ABCB A",
+                  "is_palindrome": true,
+                  "user": "Hisham",
+                  "creation_date": "2016-04-10T19:00:58.647Z"
+                }
+              },
+              {
+                "pk": 6,
+                "model": "messageboard.message",
+                "fields": {
+                  "content": "123",
+                  "is_palindrome": false,
+                  "user": "Hisham",
+                  "creation_date": "2016-04-10T19:01:11.452Z"
+                }
+              }
+            ]
 
 ### View a Message Detail [GET] [/api/v1/message/{message_id}/]
 
@@ -141,22 +139,29 @@ A message can be created by providing a JSON object containing a user (string) a
 
     + Headers
     
-            HTTP/1.0 200 OK
-            Date: Tue, 05 Apr 2016 23:36:13 GMT
-            Server: WSGIServer/0.1 Python/2.7
+            HTTP/1.1 200 OK
+            Date: Sun, 10 Apr 2016 19:34:01 GMT
+            Server: Apache/2.4.7 (Ubuntu)
             Vary: Accept
-            Content-Type: application/json
             Cache-Control: no-cache
+            Keep-Alive: timeout=5, max=100
+            Connection: Keep-Alive
+            Transfer-Encoding: chunked
+            Content-Type: application/json
 
     + Body
-            {
-                "content": "Django is awesome",
-                "creation_date": "2016-04-05T19:35:57.924000",
-                "id": 49,
-                "is_palindrome": false,
-                "resource_uri": "/api/v1/message/49/",
-                "user": "Hisham"
-            }
+            [
+              {
+                "pk": 7,
+                "model": "messageboard.message",
+                "fields": {
+                  "content": "Qlick is Awesome",
+                  "is_palindrome": false,
+                  "user": "Hisham",
+                  "creation_date": "2016-04-10T19:29:23.182Z"
+                }
+              }
+            ]
         
         
 ### Delete a Message [DELETE] [/api/v1/message/{message_id}/]
@@ -165,17 +170,19 @@ A message can be created by providing a JSON object containing a user (string) a
 
     + Headers
     
-            HTTP/1.0 204 NO CONTENT
-            Date: Tue, 05 Apr 2016 23:43:06 GMT
-            Server: WSGIServer/0.1 Python/2.7
+            HTTP/1.1 204 NO CONTENT
+            Date: Sun, 10 Apr 2016 19:38:01 GMT
+            Server: Apache/2.4.7 (Ubuntu)
             Vary: Accept
             Content-Length: 0
-            Content-Type: text/html; charset=utf-8
+            Keep-Alive: timeout=5, max=100
+            Connection: Keep-Alive
+            Content-Type: application/json
 
 
 ### Deployment
 
-Create a AWS EC2 Ubuntu Instance with Python 2.7, open port 80 for HTTP in the security group.
+Create an AWS EC2 Ubuntu Instance with Python 2.7, open port 80 for HTTP in the security group.
 
 1. Copy the demo project from GitHub to the Ubuntu instance. NOTE: All the files must be directly under the demo folder.
 2. Navigate to the demo folder. Make sure the all the files are properly copied. NOTE: Make sure the `000-default.conf` is present.
